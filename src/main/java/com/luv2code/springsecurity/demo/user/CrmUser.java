@@ -39,6 +39,7 @@ public class CrmUser {
 	@Size(min = 1, message = "is required")
 	private String email;
 	
+	private String formRole;
 
 	public CrmUser() {
 
@@ -99,6 +100,14 @@ public class CrmUser {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getFormRole() {
+		return formRole;
+	}
+
+	public void setFormRole(String formRole) {
+		this.formRole = formRole;
 	}
 	
 	
