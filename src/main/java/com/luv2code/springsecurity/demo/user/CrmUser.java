@@ -30,9 +30,7 @@ public class CrmUser {
 	@NotNull(message = "is required")
 	@Size(min = 1, message = "is required")
 	private String lastName;
-	
-	@NotNull(message = "is required")
-	private Integer age;
+
 
 	@ValidEmail
 	@NotNull(message = "is required")
@@ -83,15 +81,6 @@ public class CrmUser {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-	
-
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
 	}
 
 	public String getEmail() {

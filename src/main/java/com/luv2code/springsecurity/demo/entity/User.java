@@ -23,9 +23,6 @@ public class User {
 
 	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column(name = "age")
-	private Integer age;
 
 	@Column(name = "email")
 	private String email;
@@ -39,7 +36,7 @@ public class User {
 	public User() {
 	}
 
-	public User(String userName, String password, String firstName, String lastName, Integer age, String email) {
+	public User(String userName, String password, String firstName, String lastName, String email) {
 		this.userName = userName;
 		this.password = password;
 		this.firstName = firstName;
@@ -47,7 +44,7 @@ public class User {
 		this.email = email;
 	}
 
-	public User(String userName, String password, String firstName, String lastName, Integer age, String email,
+	public User(String userName, String password, String firstName, String lastName, String email,
 			Collection<Role> roles) {
 		this.userName = userName;
 		this.password = password;
@@ -97,15 +94,6 @@ public class User {
 		this.lastName = lastName;
 	}
 	
-	
-
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
 
 	public String getEmail() {
 		return email;
@@ -126,7 +114,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + "*********" + '\''
-				+ ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' +", age='" + age + ", email='" + email + '\''
+				+ ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\''
 				+ ", roles=" + roles + '}';
 	}
 }

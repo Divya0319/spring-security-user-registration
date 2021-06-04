@@ -99,12 +99,6 @@
 							<form:input path="lastName" placeholder="last name (*)" class="form-control" />
 						</div>
 						
-						<!-- Age -->
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
-							<form:errors path="age" cssClass="error" />
-							<form:input path="age" placeholder="age (*)" class="form-control" />
-						</div>
 						
 						<!-- Email -->
 						<div style="margin-bottom: 25px" class="input-group">
