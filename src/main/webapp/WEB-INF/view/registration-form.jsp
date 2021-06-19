@@ -109,7 +109,7 @@
 						
 						<!-- Roles -->
 						Choose a role: <div style="margin-bottom: 25px" class="input-group">
- 							<form:select path="formRole" items="${roles}" class="form-control" />
+ 							<form:select path="formRoles" items="${roles}" class="form-control" />
 						</div>
 						
 						
