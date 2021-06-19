@@ -1,6 +1,7 @@
 package com.luv2code.springsecurity.demo.controller;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -9,6 +10,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -80,8 +84,26 @@ public class RegistrationController {
 		
 		// form validation
 		 if (theBindingResult.hasErrors()){
+			 
+			 theModel.addAttribute("crmUser", new CrmUser());
+			 
+			 // add roles to the model for form display
+			 theModel.addAttribute("roles", roles);
+			 
+			 theModel.addAttribute("registrationError", "User name already exists.");
+			 
+			 logger.warning("User name/ password cannot be empty.");
+			 
 			 return "registration-form";
 	        }
+		 
+		 
+		 List<String> formRoles = theCrmUser.getFormRoles();
+		 if(!formRoles.contains("ROLE_EMPLOYEE")) {
+			 formRoles.add("ROLE_EMPLOYEE");
+		 }
+		 
+		 theCrmUser.setFormRoles(formRoles);
 
 		// check the database if user already exists
         User existing = userService.findByUserName(userName);
