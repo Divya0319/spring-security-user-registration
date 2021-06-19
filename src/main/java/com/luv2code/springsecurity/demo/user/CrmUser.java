@@ -1,5 +1,7 @@
 package com.luv2code.springsecurity.demo.user;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -37,7 +39,7 @@ public class CrmUser {
 	@Size(min = 1, message = "is required")
 	private String email;
 	
-	private String formRole;
+	private List<String> formRoles;
 
 	public CrmUser() {
 
@@ -91,12 +93,12 @@ public class CrmUser {
 		this.email = email;
 	}
 
-	public String getFormRole() {
-		return formRole;
+	public List<String> getFormRoles() {
+		return formRoles;
 	}
 
-	public void setFormRole(String formRole) {
-		this.formRole = formRole;
+	public void setFormRoles(List<String> formRoles) {
+		this.formRoles = formRoles;
 	}
 	
 	
