@@ -1,7 +1,10 @@
 package com.luv2code.springsecurity.demo.controller;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +19,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.luv2code.springsecurity.demo.user.CrmUser;
 import com.luv2code.springsecurity.demo.entity.User;
 import com.luv2code.springsecurity.demo.service.UserService;
+import com.luv2code.springsecurity.demo.user.CrmUser;
 
 @Controller
 @RequestMapping("/register")
@@ -26,6 +29,8 @@ public class RegistrationController {
 	
     @Autowired
     private UserService userService;
+    
+    private Map<String, String> roles;
 	
     private Logger logger = Logger.getLogger(getClass().getName());
     
@@ -35,12 +40,27 @@ public class RegistrationController {
 		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
 		
 		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
-	}	
+	}
+	
+	@PostConstruct
+	protected void loadRoles() {
+		// using hashmap, could also read this info from a database
+		
+		roles = new LinkedHashMap<String, String>();
+		
+		// key=the role, value=display to user
+		roles.put("ROLE_EMPLOYEE", "Employee");
+		roles.put("ROLE_MANAGER", "Manager");
+		roles.put("ROLE_ADMIN", "Admin");
+	}
 	
 	@GetMapping("/showRegistrationForm")
 	public String showMyLoginPage(Model theModel) {
 		
 		theModel.addAttribute("crmUser", new CrmUser());
+		
+		// add roles to the model for form display
+		theModel.addAttribute("roles", roles);
 		
 		return "registration-form";
 	}
