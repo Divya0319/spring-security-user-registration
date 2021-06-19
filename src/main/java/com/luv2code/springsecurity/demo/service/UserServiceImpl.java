@@ -49,8 +49,18 @@ public class UserServiceImpl implements UserService {
 		user.setLastName(crmUser.getLastName());
 		user.setEmail(crmUser.getEmail());
 
+		if(crmUser.getFormRoles().size() == 2) {
+			
 		user.setRoles(Arrays.asList(roleDao.findRoleByName(crmUser.getFormRoles().get(0)),
 				roleDao.findRoleByName(crmUser.getFormRoles().get(1))));
+		
+		}
+		
+		else {
+			
+		user.setRoles(Arrays.asList(roleDao.findRoleByName(crmUser.getFormRoles().get(0))));
+		
+		}
 
 		 // save user in the database
 		userDao.save(user);
