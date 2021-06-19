@@ -100,6 +100,13 @@ public class CrmUser {
 	public void setFormRoles(List<String> formRoles) {
 		this.formRoles = formRoles;
 	}
+
+	@Override
+	public String toString() {
+		return "CrmUser [userName=" + userName + ", password=" + "******" + ", matchingPassword=" + "******"
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", formRoles="
+				+ formRoles + "]";
+	}
 	
 	
 
