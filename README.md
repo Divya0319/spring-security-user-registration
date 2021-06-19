@@ -1,4 +1,4 @@
-# User Registration using Spring
+# User Creation using Spring
 A Spring project built using Spring Security to demonstrate login of existing user, and creation of new user.
 
 **Here is the app in action:**
