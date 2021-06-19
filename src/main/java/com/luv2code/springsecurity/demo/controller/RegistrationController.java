@@ -78,21 +78,13 @@ public class RegistrationController {
 		String userName = theCrmUser.getUserName();
 		logger.info("Processing registration form for: " + userName);
 		
+		
 		System.out.println("Binding result: " + theBindingResult );
 		
 		System.out.println("\n\n\n\n");
 		
 		// form validation
 		 if (theBindingResult.hasErrors()){
-			 
-			 theModel.addAttribute("crmUser", new CrmUser());
-			 
-			 // add roles to the model for form display
-			 theModel.addAttribute("roles", roles);
-			 
-			 theModel.addAttribute("registrationError", "User name already exists.");
-			 
-			 logger.warning("User name/ password cannot be empty.");
 			 
 			 return "registration-form";
 	        }
@@ -102,6 +94,8 @@ public class RegistrationController {
 		 if(!formRoles.contains("ROLE_EMPLOYEE")) {
 			 formRoles.add("ROLE_EMPLOYEE");
 		 }
+		 
+		 logger.info("-------> User details: " + theCrmUser);
 		 
 		 theCrmUser.setFormRoles(formRoles);
 
