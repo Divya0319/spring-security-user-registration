@@ -59,7 +59,7 @@ public class DemoAppConfig {
 
 		// set the jdbc driver
 		try {
-			securityDataSource.setDriverClass("com.mysql.jdbc.Driver");		
+			securityDataSource.setDriverClass("com.mysql.cj.jdbc.Driver");		
 		}
 		catch (PropertyVetoException exc) {
 			throw new RuntimeException(exc);
